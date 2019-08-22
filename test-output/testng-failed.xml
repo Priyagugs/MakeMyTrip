@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Failed suite [TestSuite]">
+  <listeners>
+    <listener class-name="com.qa.ExtentReportListener.ExtentReporterNG"/>
+  </listeners>
+  <test name="MMT Test Cases(failed)">
+    <classes>
+      <class name="com.mmt.qa.TestCases.LoginPageTest">
+        <methods>
+          <include name="teardown"/>
+          <include name="Setup"/>
+          <include name="HomepageLogin"/>
+        </methods>
+      </class> <!-- com.mmt.qa.TestCases.LoginPageTest -->
+    </classes>
+  </test> <!-- MMT Test Cases(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->

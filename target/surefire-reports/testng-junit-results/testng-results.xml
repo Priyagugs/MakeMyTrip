@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="6" started-at="2019-07-07T11:24:29Z" finished-at="2019-07-07T11:24:29Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="6" started-at="2019-07-07T11:24:29Z" finished-at="2019-07-07T11:24:29Z">
+      <class name="MakeMyTripAutomation.MakeMyTrip.AppTest">
+        <test-method status="PASS" signature="testApp()[pri:0, instance:testApp(MakeMyTripAutomation.MakeMyTrip.AppTest)]" name="testApp" duration-ms="1" started-at="2019-07-07T16:54:29Z" finished-at="2019-07-07T16:54:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testApp -->
+      </class> <!-- MakeMyTripAutomation.MakeMyTrip.AppTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>
