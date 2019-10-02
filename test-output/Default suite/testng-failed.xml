@@ -5,7 +5,6 @@
     <classes>
       <class name="com.mmt.qa.TestCases.LoginPageTest">
         <methods>
-          <include name="teardown"/>
           <include name="Setup"/>
           <include name="HomepageLogin"/>
         </methods>

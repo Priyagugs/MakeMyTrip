@@ -1,0 +1,122 @@
+package com.mmt.qa.Pages;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.mmt.qa.base.TestBase;
+
+public class HomePage  extends TestBase {
+
+	//*[@id="js_cp"]
+	
+	//@FindBy(class="_1")
+	WebElement txtSearch,txtSearch1;
+	WebElement button_ecellniit,likes,closemessage;
+	WebElement message;
+	
+	public void searchText()
+	{ 
+		 try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 
+		 driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS) ;
+		
+		txtSearch = (new WebDriverWait(driver, 60))
+				  .until(ExpectedConditions.presenceOfElementLocated(By.className("_1frb")));
+		txtSearch.sendKeys("E-Cell, NIT Trichy");
+		
+		txtSearch1 = (new WebDriverWait(driver, 60))
+				  .until(ExpectedConditions.presenceOfElementLocated(By.className("_1frb")));
+		txtSearch1.sendKeys(Keys.RETURN);
+		//WebElement searchbar=(new WebDriverWait(driver, 10))
+				  //.until(ExpectedConditions.presenceOfElementLocated(By.className("_42ft _4jy0 _4w98 _4jy3 _517h _51sy")));
+		//searchbar.click();
+		 button_ecellniit=(new WebDriverWait(driver, 60))
+			  .until(ExpectedConditions.presenceOfElementLocated(By.linkText("E-Cell, NIT Trichy")));
+	button_ecellniit.click();
+	
+	 likes=(new WebDriverWait(driver, 10))
+			  .until(ExpectedConditions.presenceOfElementLocated
+	(By.xpath("//a[contains(@ajaxify, '/ufi/reaction/profile/dialog/?ft_ent_identifier=ZmVlZGJhY2s6MjcxODYyOTgzNDgxNjgzNg%3D%3D&reaction_type=1&av=100000735369851')]")));
+	likes.click();
+	
+	int elementsCount= driver.findElements(By.xpath("//div[contains(@class, '_5j0e fsl fwb fcb')]")).size();
+    System.out.println("Amount of elements: " + elementsCount);
+
+// loop and click through all elements found
+
+    for (int x = 0; x < elementsCount; x++) {
+        List<WebElement> elements =driver.findElements(By.xpath("//div[contains(@class, '_5j0e fsl fwb fcb')]"));
+        WebElement client = elements.get(x);
+        try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        client.click();
+        try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+     
+       
+     JavascriptExecutor js =(JavascriptExecutor)driver;
+     js.executeScript("window.scrollTo(250,0)");
+     message=(new WebDriverWait(driver, 90))
+			 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@class, '_42ft _4jy0 _4jy4 _517h _51sy')]")));
+     message.click();
+        
+	
+		
+		  closemessage=(new WebDriverWait(driver, 90))
+				  .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@aria-label, 'Close tab')]")));
+		  
+		//actions.moveToElement(closemessage).click().perform();
+		  closemessage.click();
+		
+		driver.navigate().back();
+		likes=(new WebDriverWait(driver, 90))
+				  .until(ExpectedConditions.presenceOfElementLocated
+		(By.xpath("//a[contains(@ajaxify, '/ufi/reaction/profile/dialog/?ft_ent_identifier=ZmVlZGJhY2s6MjcxODYyOTgzNDgxNjgzNg%3D%3D&reaction_type=1&av=100000735369851')]")));
+		likes.click();
+        
+      
+    }
+    
+ }
+	/* public void sendMessage()
+	    {
+		 WebElement message= driver.findElements(By.xpath("//a[contains(@class, '_42ft _4jy0 _4jy4 _517h _51sy')]"));
+	        message.click();
+	    }
+		 
+		
+	    }*/
+		
+}
+	
+	
+

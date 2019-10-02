@@ -3,11 +3,14 @@ package com.mmt.qa.base;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.mmt.qa.utils.TestUtil;
@@ -46,9 +49,24 @@ public class TestBase {
 		
 		
 		if(browserName.equals("chrome"))
-		{
+		{//Create a map to store  preferences 
+			ChromeOptions option = new ChromeOptions();
+			
+			Map<String, Object> prefs=new HashMap<String,Object>();
+			prefs.put("profile.default_content_setting_values.notifications", 1);
+			//1-Allow, 2-Block, 0-default
+			option.setExperimentalOption("prefs",prefs);
+			
 			System.setProperty("webdriver.chrome.driver", "C:\\Automation\\Automation_Practice\\chromedriver.exe");
-			driver= new ChromeDriver();
+			
+			driver= new ChromeDriver(option);
+			driver.get(prop.getProperty("url"));
+			//options.addArguments("--disable-notifications");
+			
+			
+			
+			
+			
 			
 			
 			
@@ -62,7 +80,7 @@ public class TestBase {
 			driver.manage().deleteAllCookies();
 		//	driver.manage().timeouts().pageLoadTimeout(TestUtil.Page_load_Timeout, TimeUnit.SECONDS);
 			driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Wait,TimeUnit.SECONDS );
-			driver.get(prop.getProperty("url"));
+			
 					
 		}
 		

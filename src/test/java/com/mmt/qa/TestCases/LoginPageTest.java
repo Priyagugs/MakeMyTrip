@@ -5,14 +5,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.mmt.qa.Pages.HomePage;
+import com.mmt.qa.Pages.LoginFB;
 import com.mmt.qa.Pages.LoginPage;
+import com.mmt.qa.Pages.Post_liked_User_Profile;
+import com.mmt.qa.Pages.SearchResults;
+import com.mmt.qa.Pages.Searched_Profile_Home_Page;
 import com.mmt.qa.base.TestBase;
 
 import junit.framework.Assert;
 
 public class LoginPageTest extends TestBase {
 	
-	  LoginPage lp;
+	  LoginFB lp;
 	  HomePage homepage;
 	  
 	public LoginPageTest()
@@ -25,35 +29,38 @@ public class LoginPageTest extends TestBase {
 	public void Setup()
 	{
 		initalization();
-		lp =new LoginPage();
+		lp =new LoginFB();
 		
 	}
 	
-	/*@Test(priority=1)
-	public void LoginPageTitleTest() throws InterruptedException
-	
-	{ 
-	String expected="MakeMyTrip - #1 Travel Website 50% OFF on Hotels, Flights &amp; Holiday";
-	
-		String title_actual =lp.validatePageTitle();
-		Assert.assertEquals(expected, title_actual);
-	}*/
+
 	
 	@Test(priority=1)
 	
-	public void HomepageLogin()
+	public void HomepageLogin() throws InterruptedException
 	
 	{
-	homepage=lp.Login(prop.getProperty("username"), prop.getProperty("password"));
+	homepage =lp.Login(prop.getProperty("username"), prop.getProperty("password"));
+	homepage.searchText();
+	
+	
+	SearchResults sr = homepage.clickSearch();
+	
+	
+	Searched_Profile_Home_Page Sch_profile=sr.Click_Searched_Text();
+	Sch_profile.Click_Post_Likes();
+//	pl.Click_Post_Liked_Profiles();
+
+	
 	}
 	
 	
-@AfterMethod
+/*@AfterMethod
 	
 	public void teardown()
 	{
 		driver.quit();
-	}
+	}*/
 }
 	
 
