@@ -1,6 +1,11 @@
 package com.mmt.qa.Pages;
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -37,7 +42,7 @@ public class LoginPage extends TestBase {
 	@FindBy(css="#passwordNext > span > span")
 	WebElement BtnPasswordNext;
 
-	
+	String TestFile = "C:\\Users\\priya.arora\\Documents";
 	public LoginPage()
 	{
 		PageFactory.initElements(driver, this);
@@ -51,8 +56,16 @@ public class LoginPage extends TestBase {
 		
 	}
 
-	public HomePage Login(String uid,String pwd)
+	public HomePage Login(String uid,String pwd) throws IOException
 	{
+		
+		 FileReader FR = new FileReader(TestFile);
+		  BufferedReader BR = new BufferedReader(FR);
+		  String Content = "";
+		  
+		  while((Content = BR.readLine())!= null){
+			   System.out.println(Content);
+			  }
 		BtnLogin.click();
 	//BtnLoginWithGoogle.click();
 		Username.sendKeys(uid);

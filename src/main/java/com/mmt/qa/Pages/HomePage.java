@@ -29,6 +29,8 @@ public class HomePage  extends TestBase {
 	WebElement txtSearch;
 	
 	
+	
+	
 	WebElement txtSearch1;
 	WebElement button_ecellniit,likes,closemessage;
 	WebElement message;
@@ -41,12 +43,12 @@ public class HomePage  extends TestBase {
 		}
 	
 	 WebDriverWait wait = new WebDriverWait(driver,90);
-	public void searchText()
+	public void searchText(String Profile_Search)
 	{ 
 		 
 		
 		wait.until(ExpectedConditions.visibilityOf(txtSearch));
-		txtSearch.sendKeys("E-Cell, NIT Trichy");
+		txtSearch.sendKeys(Profile_Search);
 		
 	}	
 	public SearchResults clickSearch()
@@ -56,13 +58,16 @@ public class HomePage  extends TestBase {
 		return new SearchResults();
 	}
 	
+	
+	
 	public void restfxn()
 	{
 		
 	
 	
 	
-	int likescount=driver.findElements(By.xpath("//i[contains(@class, 'q9uorilb l9j0dhe7 hm271qws ov9facns khgy6jzf sp_nUm-Frhgfk0 sx_586093')]")).size();
+	int likescount=driver.findElements(By.xpath("//a[contains(@href, '/ufi/reaction/profile/browser/?ft_ent_identifier=ZmVlZGJhY2s6MjcxODYyOTgzNDgxNjgzNg%3D%3D&av=100000735369851')]")).size();
+	
 	System.out.println("Amount of like elements: " + likescount);
 	
 
@@ -161,6 +166,8 @@ for(int j=0;j<likescount;j++)
 		
 	    }*/
 	}
+	
+	
 		
 }
 	

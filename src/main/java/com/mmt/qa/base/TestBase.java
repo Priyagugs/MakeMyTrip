@@ -51,11 +51,11 @@ public class TestBase {
 		if(browserName.equals("chrome"))
 		{//Create a map to store  preferences 
 			ChromeOptions option = new ChromeOptions();
-			
-			Map<String, Object> prefs=new HashMap<String,Object>();
-			prefs.put("profile.default_content_setting_values.notifications", 1);
+			option.addArguments("--disable-notifications");
+			/*Map<String, Object> prefs=new HashMap<String,Object>();
+			prefs.put("profile.default_content_setting_values.notifications", 2);
 			//1-Allow, 2-Block, 0-default
-			option.setExperimentalOption("prefs",prefs);
+			option.setExperimentalOption("prefs",prefs);*/
 			
 			System.setProperty("webdriver.chrome.driver", "C:\\Automation\\Automation_Practice\\chromedriver.exe");
 			
